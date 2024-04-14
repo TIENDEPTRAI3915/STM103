@@ -1,0 +1,19 @@
+//rx fame 1byte start   -   1byte command -     1byte data     -              1 byte check sum         -      1byte end  
+		*                      A-B-T								        (1byte command + 1byte data)&0xFF			*
+						        A,B					O,C  (on,off)
+								T                   G    (GETDATA)
+								
+								D                   
+								M					
+								Y
+								H
+								m
+								luu ý: set time fame
+//tx fame 1byte start - 1byte command - 1byte or 2byte data-1byte end
+		*				  	A-B-C-E								*
+							A,B         -1byte:trang thai led O,C(on,off),
+										-1byte:led cmd eror 0xFF
+										-1byte:led on/off eror (0xFE/0xFD)
+							T           -2byte: vd 32,53 do C -> byte1 32  -byte2 53 (Decimal)
+										-cmd eror: byte1 0xFF byte2 0xFF
+							E         	-2byte: byte1 byte command  - byte2 1byte data  (RX fame)
